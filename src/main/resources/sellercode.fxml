@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArtShoppingApplication.controllers.SellerCheckController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="138.0" lineSpacing="1.0" prefHeight="74.0" prefWidth="556.0" text="In order to create a Seller Account" textAlignment="CENTER" textFill="#2fb8bf">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="331.0" layoutY="194.0" prefHeight="64.0" prefWidth="338.0" text="you must enter the additional key:" textFill="#14bcbf">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="keyField" alignment="CENTER" layoutX="389.0" layoutY="286.0" prefHeight="26.0" prefWidth="208.0" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="401.0" layoutY="336.0" mnemonicParsing="false" onAction="#verifySellerrAction" prefHeight="26.0" prefWidth="184.0" text="Create Seller Account" textAlignment="CENTER" textFill="#17c23c">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Text fx:id="ErrorField" layoutX="312.0" layoutY="395.0" textAlignment="CENTER" wrappingWidth="362.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Button layoutX="674.0" layoutY="430.0" mnemonicParsing="false" onAction="#onToRegistration" prefHeight="30.0" prefWidth="157.0" text="Back to Registration" textFill="#17afdd">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

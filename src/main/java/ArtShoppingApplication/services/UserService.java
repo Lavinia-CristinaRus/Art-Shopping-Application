@@ -12,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 import static ArtShoppingApplication.services.FileSystemService.getPathToFile;
+import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 public class UserService {
 
@@ -108,7 +109,12 @@ public class UserService {
             throw new IllegalStateException("SHA-512 does not exist!");
         }
         return md;
-    }}
+    }
+    public static void deleteSeller(String email) {
+        // userRepository.remove(ObjectFilters.ALL); //used because of nasty first try of creating database
+        userRepository.remove(eq("email", email));
+    }
+}
 
 
 
