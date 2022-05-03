@@ -15,7 +15,6 @@ import ArtShoppingApplication.services.UserService;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
 
 
 public class LoginController {
@@ -34,6 +33,10 @@ public class LoginController {
     public void login(ActionEvent action) throws Exception {
         if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 1) {
             loginMessage.setText("successful login!");
+            String file = "log.txt";
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(EmailField.getText()+" "+"Seller");
+            fileWriter.close();
 //            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/seller.fxml"));
 //            Scene modifyScene = new Scene(modifyWindow);
 //            Stage window = new Stage();
@@ -44,6 +47,10 @@ public class LoginController {
         }
         if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 2) {
             loginMessage.setText("successful login!");
+            String file = "log.txt";
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(EmailField.getText()+" "+"Buyer");
+            fileWriter.close();
 //            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/buyer.fxml"));
 //            Scene modifyScene = new Scene(modifyWindow);
 //            Stage window = new Stage();
