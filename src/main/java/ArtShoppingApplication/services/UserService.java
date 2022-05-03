@@ -114,6 +114,25 @@ public class UserService {
         // userRepository.remove(ObjectFilters.ALL); //used because of nasty first try of creating database
         userRepository.remove(eq("email", email));
     }
+
+    public static int verify(String email, String password) {
+        for(User user : userRepository.find()) {
+            if(email.equals(user.getEmail())){
+                if(encodePassword(email,password).equals(user.getPassword())) {
+                    if(user.getRole() == "Seller") {
+                        return 1;
+                    }
+                    else{
+                        return 2;
+                    }
+                }
+                else {
+                    return 0;
+                }
+            }
+        }
+        return -1;
+    }
 }
 
 
