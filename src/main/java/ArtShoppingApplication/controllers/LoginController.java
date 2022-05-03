@@ -8,24 +8,67 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import ArtShoppingApplication.services.UserService;
 
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
 
 
 public class LoginController {
 
 
     @FXML
-    private javafx.scene.control.PasswordField PasswordField;
+    private PasswordField PasswordField;
     @FXML
     private TextField EmailField;
     @FXML
     private Label login_test;
+    @FXML
+    private Text loginMessage;
 
 
-
+    public void login(ActionEvent action) throws Exception {
+        if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 1) {
+            loginMessage.setText("successful login!");
+            String file = "log.txt";
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(EmailField.getText()+" "+"Seller");
+            fileWriter.close();
+//            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/seller.fxml"));
+//            Scene modifyScene = new Scene(modifyWindow);
+//            Stage window = new Stage();
+//            window.setScene(modifyScene);
+//            window.show();
+            Stage stage = (Stage) EmailField.getScene().getWindow();
+            stage.close();
+        }
+        if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 2) {
+            loginMessage.setText("successful login!");
+            String file = "log.txt";
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(EmailField.getText()+" "+"Buyer");
+            fileWriter.close();
+//            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/buyer.fxml"));
+//            Scene modifyScene = new Scene(modifyWindow);
+//            Stage window = new Stage();
+//            window.setScene(modifyScene);
+//            window.show();
+            Stage stage = (Stage) EmailField.getScene().getWindow();
+            stage.close();
+        }
+        if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 0) {
+            loginMessage.setText("Incorrect password!");
+            PasswordField.clear();
+            EmailField.clear();
+            return;
+        }
+        PasswordField.clear();
+        EmailField.clear();
+        loginMessage.setText("There is no account with that email address!");
+    }
 
 
     public void onToRegistration(ActionEvent event) throws IOException {
