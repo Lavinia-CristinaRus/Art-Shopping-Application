@@ -21,3 +21,6 @@ buildNumber.properties
 !src/**/build/
 
 .java-version
+
+# Ignore Gradle build output directory
+build
