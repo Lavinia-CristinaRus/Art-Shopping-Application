@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArtShoppingApplication.controllers.DescriptionController">
+    <children>
+        <VBox prefHeight="600.0" prefWidth="186.0">
+            <children>
+                <Button alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="10.0" id="Add item" layoutY="70.0" onAction="#close" prefHeight="0.0" prefWidth="177.0" text="x" textFill="#f5f5f5">
+                    <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+        <Pane fx:id="pane" prefHeight="600.0" prefWidth="718.0">
+            <children>
+                <Text fx:id="name" layoutX="200.0" layoutY="10.0" wrappingWidth="87.0" />
+                <Text fx:id="description" layoutX="200.0" layoutY="10.0" wrappingWidth="100.0" />
+            </children>
+        </Pane>
+    </children>
+</HBox>

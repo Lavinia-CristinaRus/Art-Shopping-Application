@@ -13,7 +13,7 @@
     <children>
         <VBox prefHeight="600.0" prefWidth="186.0">
             <children>
-                <Button prefHeight="61.0" prefWidth="177.0" text="Hello" textFill="#f5f5f5">
+                <Button prefHeight="61.0" prefWidth="177.0" text="Hello" textFill="#f5f5f5" onAction="#testDescription">
                     <font>
                         <Font name="Consolas Bold" size="18.0" />
                     </font>
@@ -34,7 +34,6 @@
         <Pane fx:id="pane" prefHeight="600.0" prefWidth="718.0">
             <children>
                 <ListView fx:id="items" layoutY="84.0" opacity="0.75" prefHeight="516.0" prefWidth="239.0"/>
-       <!--         <ListView fx:id="description" layoutY="84.0" opacity="0.75" prefHeight="516.0" prefWidth="239.0"/> -->
                 <ListView fx:id="price" layoutY="84.0" opacity="0.75" prefHeight="516.0" prefWidth="239.0"/>
                 <Label layoutX="24.0" layoutY="14.0" prefHeight="48.0" prefWidth="393.0" text="My Items" textFill="WHITE">
                     <font>

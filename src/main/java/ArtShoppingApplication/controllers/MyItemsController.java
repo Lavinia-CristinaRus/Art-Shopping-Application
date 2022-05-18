@@ -15,8 +15,6 @@ import java.io.IOException;
 public class MyItemsController {
     @FXML
     private ListView items;
-    //@FXML
-    //private ListView description;
     @FXML
     private ListView price;
 
@@ -27,6 +25,16 @@ public class MyItemsController {
         Scene scene0 = new Scene(p, 1000, 600);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Add items page");
+        window.setScene(scene0);
+        window.show();
+    }
+
+    public void testDescription(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/description.fxml"));
+        Parent p = (Parent)fxmlLoader.load();
+        Scene scene0 = new Scene(p, 600, 600);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Description Page");
         window.setScene(scene0);
         window.show();
     }
