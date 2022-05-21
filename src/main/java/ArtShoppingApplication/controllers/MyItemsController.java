@@ -22,7 +22,7 @@ public class MyItemsController {
     public void openItemRegistrationForm(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/addItem.fxml"));
         Parent p = (Parent)fxmlLoader.load();
-        Scene scene0 = new Scene(p, 1000, 600);
+        Scene scene0 = new Scene(p, 600, 400);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Add items page");
         window.setScene(scene0);
