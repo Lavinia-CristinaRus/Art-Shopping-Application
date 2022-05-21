@@ -27,6 +27,11 @@
             <children>
                 <Text fx:id="name" layoutX="200.0" layoutY="10.0" wrappingWidth="87.0" />
                 <Text fx:id="description" layoutX="200.0" layoutY="10.0" wrappingWidth="100.0" />
+                <Button alignment="BOTTOM_LEFT" onAction="#handleEditItem" prefHeight="37.0" prefWidth="203.0" text="Edit Item" textAlignment="CENTER" textFill="#235dba">
+                        <font>
+                            <Font name="System Bold" size="16.0" />
+                        </font></Button>
+                <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#handleDeleteItem" prefHeight="32.0" prefWidth="146.0" text="Delete Item" textAlignment="CENTER" textFill="#d50000">
             </children>
         </Pane>
     </children>

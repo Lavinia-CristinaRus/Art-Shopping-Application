@@ -25,4 +25,12 @@ public class DescriptionController {
         stage.close();
     }
 
+    public void handleDeleteItem() {
+
+    }
+
+    public void handleEditItem() {
+
+    }
+
 }
