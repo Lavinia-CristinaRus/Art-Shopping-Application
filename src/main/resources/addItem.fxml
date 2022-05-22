@@ -3,41 +3,42 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArtShoppingApplication.controllers.AddItemController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <TextField layoutX="101.0" layoutY="77.0" />
+            <TextField fx:id="name" layoutX="101.0" layoutY="77.0" />
             <Text layoutX="226.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add a new item" wrappingWidth="148.9078125000001">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
             <Label layoutX="29.0" layoutY="81.0" text="Name" />
-            <TextField layoutX="101.0" layoutY="117.0" />
-            <Label layoutX="29.0" layoutY="121.0" prefHeight="17.0" prefWidth="40.0" text="Pictue" />
-            <TextField layoutX="101.0" layoutY="151.0" />
-            <Label layoutX="29.0" layoutY="155.0" prefHeight="17.0" prefWidth="71.0" text="Description" />
-            <TextField layoutX="101.0" layoutY="188.0" />
-            <Label layoutX="29.0" layoutY="192.0" prefHeight="17.0" prefWidth="71.0" text="Price" />
-            <TextField layoutX="101.0" layoutY="223.0" />
-            <Label layoutX="29.0" layoutY="227.0" prefHeight="17.0" prefWidth="71.0" text="Category" />
-            <TextField layoutX="372.0" layoutY="89.0" />
-            <Label layoutX="300.0" layoutY="93.0" prefHeight="17.0" prefWidth="71.0" text="Dimensions" />
-            <TextField layoutX="372.0" layoutY="125.0" />
-            <Label layoutX="300.0" layoutY="129.0" prefHeight="17.0" prefWidth="71.0" text="Materials" />
-            <TextField layoutX="372.0" layoutY="161.0" />
-            <Label layoutX="300.0" layoutY="165.0" prefHeight="17.0" prefWidth="71.0" text="Colors" />
-            <TextField layoutX="372.0" layoutY="196.0" />
-            <Label layoutX="300.0" layoutY="200.0" prefHeight="17.0" prefWidth="71.0" text="Weight" />
-            <Button layoutX="413.0" layoutY="333.0" mnemonicParsing="false" text="Add Item" />
-            <Button layoutX="150.0" layoutY="333.0" mnemonicParsing="false" text="Cancel" />
+            <Label layoutX="301.0" layoutY="220.0" prefHeight="17.0" prefWidth="40.0" text="Picture" />
+            <TextField fx:id="description" layoutX="101.0" layoutY="116.0" />
+            <Label layoutX="29.0" layoutY="120.0" prefHeight="17.0" prefWidth="71.0" text="Description" />
+            <TextField fx:id="price" layoutX="101.0" layoutY="153.0" />
+            <Label layoutX="29.0" layoutY="157.0" prefHeight="17.0" prefWidth="71.0" text="Price" />
+            <TextField fx:id="category" layoutX="101.0" layoutY="190.0" />
+            <Label layoutX="29.0" layoutY="194.0" prefHeight="17.0" prefWidth="71.0" text="Category" />
+            <TextField fx:id="dimensions" layoutX="101.0" layoutY="229.0" />
+            <Label layoutX="29.0" layoutY="233.0" prefHeight="17.0" prefWidth="71.0" text="Dimensions" />
+            <TextField fx:id="materials" layoutX="373.0" layoutY="81.0" />
+            <Label layoutX="301.0" layoutY="85.0" prefHeight="17.0" prefWidth="71.0" text="Materials" />
+            <TextField fx:id="colors" layoutX="373.0" layoutY="117.0" />
+            <Label layoutX="301.0" layoutY="121.0" prefHeight="17.0" prefWidth="71.0" text="Colors" />
+            <TextField fx:id="weight" layoutX="373.0" layoutY="152.0" />
+            <Label layoutX="301.0" layoutY="156.0" prefHeight="17.0" prefWidth="71.0" text="Weight" />
+            <Button layoutX="413.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleAddItem" text="Add Item" textFill="#213fd4" />
+            <Button layoutX="150.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" textFill="#dc0000" />
+            <ImageView fx:id="picture" fitHeight="106.0" fitWidth="151.0" layoutX="372.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="273.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleSelectPicture" text="Select Picture" textFill="#00e1ff" />
          </children>
       </Pane>
    </children>
