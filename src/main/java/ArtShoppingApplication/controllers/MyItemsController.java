@@ -10,13 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class MyItemsController {
     @FXML
     private ListView items;
-    @FXML
-    private ListView price;
 
     @FXML
     public void openItemRegistrationForm(ActionEvent event) throws IOException {
@@ -41,8 +40,14 @@ public class MyItemsController {
 
     }
 
-    public void toSignOut() {
-
+    public void toSignOut() throws IOException {
+        new FileWriter("log.txt", false).close();
+        Parent p = FXMLLoader.load(getClass().getResource("/login.fxml"));
+        Scene scene0 = new Scene(p, 1000, 600);
+        Stage window = (Stage) items.getScene().getWindow();
+        window.setTitle("Login page");
+        window.setScene(scene0);
+        window.show();
     }
 
     public void testDescription(ActionEvent event) throws IOException {
