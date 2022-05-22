@@ -15,6 +15,8 @@ import java.util.Scanner;
 
 import static ArtShoppingApplication.services.FileSystemService.getPathToFile;
 import static ArtShoppingApplication.services.UserService.searchByEmail;
+import static org.dizitart.no2.objects.filters.ObjectFilters.and;
+import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 public class ItemService {
     private static ObjectRepository<Item> itemRepository;
@@ -26,7 +28,7 @@ public class ItemService {
         itemRepository = database.getRepository(Item.class);
     }
 
-    public static void addItem(String name, String picture, String description, String price, String category, String dimensions, String material, String colors, String weight, String artist) throws NameAlreadyUsedException, NameFieldEmptyException, NoPictureSelectedException, DescriptionFieldEmptyException, PriceFieldEmptyException, PriceNotValidException, CategoryNotSelectedException, DimensionsFieldEmptyException, WeightFieldEmptyException, WeightNotValidException, UserDoesNotExist {
+    public static void addItem(String name, String picture, String description, String price, String category, String dimensions, String material, String colors, String weight, String ssartist) throws NameAlreadyUsedException, NameFieldEmptyException, NoPictureSelectedException, DescriptionFieldEmptyException, PriceFieldEmptyException, PriceNotValidException, CategoryNotSelectedException, DimensionsFieldEmptyException, WeightFieldEmptyException, WeightNotValidException, UserDoesNotExist {
         checkNameFieldIsNotEmpty(name);
         checkNameIsUnic(name);
         checkPictureIsSelected(picture);
@@ -39,8 +41,7 @@ public class ItemService {
         checkWeightFieldIsNotEmpty(weight);
         checkWeightIsAValue(weight);
         Integer iweight = Integer.valueOf(weight);
-        User uartist = searchByEmail(artist);
-        itemRepository.insert(new Item(name, picture, description, iprice, category, dimensions, material, colors, iweight, uartist));
+        itemRepository.insert(new Item(name, picture, description, iprice, category, dimensions, material, colors, iweight, ssartist));
     }
 
     private static void checkWeightIsAValue(String weight) throws WeightNotValidException{
@@ -102,16 +103,13 @@ public class ItemService {
         }
     }
 
-    public static List<Item> getMyItems() throws FileNotFoundException, UserDoesNotExist {
+    public static List<Item> getMyItems() throws FileNotFoundException {
         List<Item> myItems = new ArrayList<>();
         FileInputStream fileIn = new FileInputStream("log.txt");
         Scanner scan = new Scanner(fileIn);
         String fartist = scan.next();
-        User user = searchByEmail(fartist);
-        for (Item item : itemRepository.find()) {
-            if (Objects.equals(user, item.getArtist())) {
+        for (Item item : itemRepository.find(eq("artist",fartist))) {
                 myItems.add(item);
-            }
         }
         return myItems;
     }
@@ -121,23 +119,26 @@ public class ItemService {
         return itemRepository.find().toList();
     }
 
-    public static Item getItemByName(String name) throws UserDoesNotExist, FileNotFoundException, ItemDoesNotExist {
-        try {
-            FileInputStream fileIn = new FileInputStream("log.txt");
-            Scanner scan = new Scanner(fileIn);
-            String fartist = scan.next();
-            User user = searchByEmail(fartist);
-            for (Item item : itemRepository.find()) {
-                if (Objects.equals(user, item.getArtist()) && Objects.equals(item.getName(), name)) {
-                    return item;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UserDoesNotExist e) {
-            e.printStackTrace();
+    public static Item getItemByName(String name) throws ItemDoesNotExist, FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fartist = scan.next();
+        for (Item item : itemRepository.find(and(eq("name",name),eq("artist",fartist)))) {
+            return item;
         }
         throw new ItemDoesNotExist();
+    }
+
+    public static void deleteItem() throws FileNotFoundException, UserDoesNotExist {
+        FileInputStream fileIn1 = new FileInputStream("log.txt");
+        Scanner scan1 = new Scanner(fileIn1);
+        String fartist1 = scan1.next();
+        FileInputStream fileIn2 = new FileInputStream("iname.txt");
+        Scanner scan2 = new Scanner(fileIn2);
+        String fname1 = scan2.next();
+//       itemRepository.remove(ObjectFilters.ALL); //used because of nasty first try of creating database
+        itemRepository.remove(and(eq("name", fname1),eq("artist",fartist1)));
+
     }
 
 }

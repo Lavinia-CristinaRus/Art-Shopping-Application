@@ -1,6 +1,10 @@
 package ArtShoppingApplication.model;
 
+import ArtShoppingApplication.exceptions.UserDoesNotExist;
+
 import java.util.Objects;
+
+import static ArtShoppingApplication.services.UserService.searchByEmail;
 
 public class Item {
 
@@ -13,9 +17,9 @@ public class Item {
     private String material;
     private String colors;
     private Integer weight;
-    private User artist;
+    private String artist;
 
-    public Item(String name, String picture, String description, Integer price, String category, String dimensions, String material, String colors, Integer weight, User artist) {
+    public Item(String name, String picture, String description, Integer price, String category, String dimensions, String material, String colors, Integer weight, String artist) {
         this.name = name;
         this.picture = picture;
         this.description = description;
@@ -33,8 +37,8 @@ public class Item {
         return this.name;
     }
 
-    public User getArtist() {
-        return artist;
+    public String getArtist() {
+        return this.artist;
     }
 
     @Override
@@ -51,7 +55,8 @@ public class Item {
 
     @Override
     public String toString() {
-        String text = "Description: " + this.description + '\n' + "Price: " + this.price + '\n' + "Category: " + this.category + '\n'+ "Dimensions: " + this.dimensions + '\n'+ "Materials: " + this.material + '\n'+ "Colors: " + this.colors + '\n'+ "Weight: " + this.weight + '\n'+ "Artist: " + this.artist.getFullName();
+        String text = null;
+        text = "Description: " + this.description + '\n' + "Price: " + this.price + '\n' + "Category: " + this.category + '\n'+ "Dimensions: " + this.dimensions + '\n'+ "Materials: " + this.material + '\n'+ "Colors: " + this.colors + '\n'+ "Weight: " + this.weight + '\n'+ "Artist: " + this.artist;
         return text;
     }
 

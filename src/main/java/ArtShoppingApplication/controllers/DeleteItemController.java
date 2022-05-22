@@ -1,6 +1,6 @@
 package ArtShoppingApplication.controllers;
 
-import javafx.event.ActionEvent;
+import ArtShoppingApplication.exceptions.UserDoesNotExist;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,18 +11,20 @@ import javafx.stage.Stage;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import static ArtShoppingApplication.services.ItemService.deleteItem;
+
 public class DeleteItemController {
     @FXML
     private Text confirm;
 
     @FXML
-    public void close(ActionEvent event) {
+    public void close() {
         Stage stage = (Stage) confirm.getScene().getWindow();
         stage.close();
     }
 
-    public void handleDeleteItem() throws IOException {
-
+    public void handleDeleteItem() throws IOException, UserDoesNotExist {
+        deleteItem();
         Stage stage = (Stage) confirm.getScene().getWindow();
         stage.close();
     }

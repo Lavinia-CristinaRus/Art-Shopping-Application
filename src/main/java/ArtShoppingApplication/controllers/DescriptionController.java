@@ -32,7 +32,7 @@ public class DescriptionController {
     private ImageView itemImage;
 
     @FXML
-    public void initialize() throws ItemDoesNotExist, UserDoesNotExist, FileNotFoundException {
+    public void initialize() throws ItemDoesNotExist, FileNotFoundException {
         FileInputStream fileIn = new FileInputStream("iname.txt");
         Scanner scan = new Scanner(fileIn);
         String sname = scan.next();
