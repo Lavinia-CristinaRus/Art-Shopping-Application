@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArtShoppingApplication.controllers.MyItemsController">
+    <children>
+        <VBox prefHeight="600.0" prefWidth="200.0">
+            <children>
+                <Button id="Add item" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="70.0" onAction="#openItemRegistrationForm" prefHeight="0.0" prefWidth="177.0" text="Add Item" textFill="#f5f5f5">
+                    <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Button>
+            <Button fx:id="requests" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toRequests" prefHeight="0.0" prefWidth="177.0" text="View Requests" textFill="#f5f5f5">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="buyerList" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toBuyerList" prefHeight="0.0" prefWidth="177.0" text="View All Items" textFill="#f5f5f5">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="myRequests" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toMyRequests" prefHeight="0.0" prefWidth="177.0" text="My Requests" textFill="#f5f5f5">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="signOut" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toSignOut" prefHeight="0.0" prefWidth="177.0" text="Sign Out" textFill="#f5f5f5">
+               <font>
+                  <Font name="Consolas Bold" size="14.0" />
+               </font>
+            </Button>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="message" layoutX="16.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="168.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            </children>
+        </VBox>
+        <Pane fx:id="pane" prefHeight="600.0" prefWidth="400.0">
+            <children>
+                <ListView fx:id="items" layoutY="84.0" onMouseClicked="#toDescriptionSelected" opacity="0.75" prefHeight="516.0" prefWidth="367.0" />
+                <Label layoutX="24.0" layoutY="14.0" prefHeight="48.0" prefWidth="393.0" text="My Items" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="26.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </children>
+</HBox>

@@ -1,5 +1,8 @@
 package ArtShoppingApplication.model;
 
+import ArtShoppingApplication.exceptions.IncorrectPasswordException;
+import ArtShoppingApplication.exceptions.UserDoesNotExist;
+
 import java.util.Objects;
 
 public class User {
@@ -90,6 +93,9 @@ public class User {
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
-
-   
+    @Override
+    public String toString() {
+        String text = "Name: " + this.fullName + '\n' + "Role: " + this.role + '\n' + "Email: " + this.email;
+        return text;
+    }
 }

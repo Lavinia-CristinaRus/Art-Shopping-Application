@@ -30,18 +30,18 @@ public class LoginController {
     private Text loginMessage;
 
 
-    public void login(ActionEvent action) throws Exception {
+    public void login() throws Exception {
         if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 1) {
             loginMessage.setText("successful login!");
             String file = "log.txt";
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(EmailField.getText()+" "+"Seller");
             fileWriter.close();
-//            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/seller.fxml"));
-//            Scene modifyScene = new Scene(modifyWindow);
-//            Stage window = new Stage();
-//            window.setScene(modifyScene);
-//            window.show();
+            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
+            Scene modifyScene = new Scene(modifyWindow,600,600);
+            Stage window = new Stage();
+            window.setScene(modifyScene);
+            window.show();
             Stage stage = (Stage) EmailField.getScene().getWindow();
             stage.close();
         }
@@ -51,11 +51,11 @@ public class LoginController {
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(EmailField.getText()+" "+"Buyer");
             fileWriter.close();
-//            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/buyer.fxml"));
-//            Scene modifyScene = new Scene(modifyWindow);
-//            Stage window = new Stage();
-//            window.setScene(modifyScene);
-//            window.show();
+            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
+            Scene modifyScene = new Scene(modifyWindow,600,600);
+            Stage window = new Stage();
+            window.setScene(modifyScene);
+            window.show();
             Stage stage = (Stage) EmailField.getScene().getWindow();
             stage.close();
         }
