@@ -29,6 +29,22 @@ public class MyItemsController {
         window.show();
     }
 
+    public void toRequests() {
+
+    }
+
+    public void toBuyerList() {
+
+    }
+
+    public void toMyRequests() {
+
+    }
+
+    public void toSignOut() {
+
+    }
+
     public void testDescription(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/description.fxml"));
         Parent p = (Parent)fxmlLoader.load();
