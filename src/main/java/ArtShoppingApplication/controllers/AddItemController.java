@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 public class AddItemController {
     @FXML
@@ -60,7 +61,13 @@ public class AddItemController {
     public void handleAddItem() {
     }
 
-    public void handleCancel() {
+    public void handleCancel() throws IOException {
+        Parent p = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
+        Scene scene2 = new Scene(p, 1500, 800);
+        Stage window = (Stage)picture.getScene().getWindow();
+        window.setTitle("These are your products");
+        window.setScene(scene2);
+        window.show();
     }
 
 }
