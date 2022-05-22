@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -26,6 +28,8 @@ public class MyItemsController {
 
     @FXML
     private ListView items;
+    @FXML
+    private Text message;
 
     @FXML
     public void openItemRegistrationForm(ActionEvent event) throws IOException {
@@ -73,12 +77,14 @@ public class MyItemsController {
         window.show();
     }
 
-    public void toDescriptionSelected() throws IOException {
+    public void toDescriptionSelected(MouseEvent mouseEvent) throws IOException {
+        String item = (String)items.getSelectionModel().getSelectedItem();
+        if(item==null||item.isEmpty()) message.setText("Nothing was selected.");
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/description.fxml"));
         Parent p = (Parent)fxmlLoader.load();
         Scene scene0 = new Scene(p, 550, 400);
         Stage window = new Stage();
-        window.setTitle("Description Page");
+        window.setTitle(item);
         window.setScene(scene0);
         window.show();
     }
