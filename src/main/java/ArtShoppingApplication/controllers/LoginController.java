@@ -51,7 +51,7 @@ public class LoginController {
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(EmailField.getText()+" "+"Buyer");
             fileWriter.close();
-            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
+            Parent modifyWindow = FXMLLoader.load(getClass().getResource("/buyerPage.fxml"));
             Scene modifyScene = new Scene(modifyWindow,600,600);
             Stage window = new Stage();
             window.setScene(modifyScene);
