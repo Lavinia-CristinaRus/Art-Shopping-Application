@@ -20,6 +20,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static ArtShoppingApplication.services.ItemService.deleteItem;
+
 public class EditItemController {
     @FXML
     private TextField name;
@@ -65,8 +67,22 @@ public class EditItemController {
         picture.setImage(fxImage);
     }
 
-    public void handleEditItem() throws NoPictureSelectedException {
-        
+    public void handleSaveItem() throws NoPictureSelectedException {
+        try {
+            FileInputStream fileIn = new FileInputStream("log.txt");
+            Scanner scan = new Scanner(fileIn);
+            String artist = scan.next();
+            if(fxImage==null) {
+                throw new NoPictureSelectedException();
+            }
+            ItemService.updateItem(name.getText(), fxImage.getUrl(), description.getText(), price.getText(), (String)category.getValue(), dimensions.getText(), materials.getText(), colors.getText(), weight.getText(), artist);
+            message.setText("Item added successfully!");
+        }
+        catch (NameAlreadyUsedException | NameFieldEmptyException | NoPictureSelectedException | DescriptionFieldEmptyException | PriceFieldEmptyException | PriceNotValidException | CategoryNotSelectedException | DimensionsFieldEmptyException | WeightFieldEmptyException | WeightNotValidException | FileNotFoundException | UserDoesNotExist ex) {
+            message.setText(ex.getMessage());
+
+        }
+
     }
 
     public void handleCancel() throws IOException {

@@ -44,6 +44,26 @@ public class ItemService {
         itemRepository.insert(new Item(name, picture, description, iprice, category, dimensions, material, colors, iweight, ssartist));
     }
 
+    public static void updateItem(String name, String picture, String description, String price, String category, String dimensions, String material, String colors, String weight, String ssartist) throws NameAlreadyUsedException, NameFieldEmptyException, NoPictureSelectedException, DescriptionFieldEmptyException, PriceFieldEmptyException, PriceNotValidException, CategoryNotSelectedException, DimensionsFieldEmptyException, WeightFieldEmptyException, WeightNotValidException, UserDoesNotExist, FileNotFoundException {
+        checkNameFieldIsNotEmpty(name);
+        FileInputStream fileIn = new FileInputStream("iname.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fname = scan.next();
+        if(!name.equals(fname)) {checkNameIsUnic(name);}
+        checkPictureIsSelected(picture);
+        checkDescriptionFieldIsNotEmpty(description);
+        checkPriceFieldIsNotEmpty(price);
+        checkPriceIsAValue(price);
+        Integer iprice = Integer.valueOf(price);
+        checkCategoryIsSelected(category);
+        checkDimensionsFieldIsNotEmpty(dimensions);
+        checkWeightFieldIsNotEmpty(weight);
+        checkWeightIsAValue(weight);
+        Integer iweight = Integer.valueOf(weight);
+        deleteItem();
+        itemRepository.insert(new Item(name, picture, description, iprice, category, dimensions, material, colors, iweight, ssartist));
+    }
+
     private static void checkWeightIsAValue(String weight) throws WeightNotValidException{
         if(!weight.matches("\\d+"))  {
             throw new WeightNotValidException();
