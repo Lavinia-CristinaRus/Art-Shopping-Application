@@ -6,13 +6,13 @@ import java.util.Objects;
 public class Request {
 
     private String name;
-    private String picture;
     private String description;
-    private boolean accept=false;
+    private int accept=0;
 
-    public Request(String name, String description) {
+    public Request(String name, String description, int accept) {
         this.name = name;
         this.description = description;
+        this.accept=accept;
     }
 
     public Request() {
