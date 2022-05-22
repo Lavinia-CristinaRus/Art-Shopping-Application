@@ -1,6 +1,7 @@
 package ArtShoppingApplication.controllers;
 
 import ArtShoppingApplication.exceptions.*;
+import ArtShoppingApplication.model.Item;
 import ArtShoppingApplication.services.ItemService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import static ArtShoppingApplication.services.ItemService.deleteItem;
+import static ArtShoppingApplication.services.ItemService.getItemByName;
 
 public class EditItemController {
     @FXML
@@ -45,8 +47,21 @@ public class EditItemController {
     private ImageView picture;
     Image fxImage;
     @FXML
-    public void initialize() {
+    public void initialize() throws ItemDoesNotExist, FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("iname.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fname = scan.next();
         category.getItems().addAll("Paintings", "Sculptures","Others");
+        Item i = getItemByName(fname);
+        name.setText(fname);
+        description.setText(i.getDescription());
+        price.setText(Integer.toString(i.getPrice()));
+        category.setValue(i.getCategory());
+        dimensions.setText(i.getDimensions());
+        materials.setText(i.getMaterial());
+        colors.setText(i.getColors());
+        weight.setText(Integer.toString(i.getWeight()));
+        picture.setImage(new Image(i.getPicture()));
     }
 
 
@@ -76,7 +91,7 @@ public class EditItemController {
                 throw new NoPictureSelectedException();
             }
             ItemService.updateItem(name.getText(), fxImage.getUrl(), description.getText(), price.getText(), (String)category.getValue(), dimensions.getText(), materials.getText(), colors.getText(), weight.getText(), artist);
-            message.setText("Item added successfully!");
+            message.setText("Item saved successfully!");
         }
         catch (NameAlreadyUsedException | NameFieldEmptyException | NoPictureSelectedException | DescriptionFieldEmptyException | PriceFieldEmptyException | PriceNotValidException | CategoryNotSelectedException | DimensionsFieldEmptyException | WeightFieldEmptyException | WeightNotValidException | FileNotFoundException | UserDoesNotExist ex) {
             message.setText(ex.getMessage());

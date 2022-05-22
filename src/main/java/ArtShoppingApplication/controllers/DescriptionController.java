@@ -59,9 +59,14 @@ public class DescriptionController {
         window.show();
     }
 
-    public void handleEditItem() {
-        Stage stage = (Stage) description.getScene().getWindow();
-        stage.close();
+    public void handleEditItem() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/editItem.fxml"));
+        Parent p = (Parent)fxmlLoader.load();
+        Scene scene0 = new Scene(p, 600, 400);
+        Stage window = (Stage) (description.getScene().getWindow());
+        window.setTitle("Edit Item Page");
+        window.setScene(scene0);
+        window.show();
     }
 
 }

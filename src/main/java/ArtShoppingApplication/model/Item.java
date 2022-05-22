@@ -37,9 +37,6 @@ public class Item {
         return this.name;
     }
 
-    public String getArtist() {
-        return this.artist;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -64,4 +61,35 @@ public class Item {
         return this.picture;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Integer getPrice() {
+        return this.price;
+    }
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    public String getDimensions() {
+        return this.dimensions;
+    }
+
+    public String getMaterial() {
+        return this.material;
+    }
+
+    public String getColors() {
+        return this.colors;
+    }
+
+    public Integer getWeight() {
+        return this.weight;
+    }
+
+    public String getArtist() {
+        return this.artist;
+    }
 }

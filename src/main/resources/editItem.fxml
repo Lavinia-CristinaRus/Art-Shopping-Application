@@ -35,7 +35,7 @@
                 <Label layoutX="301.0" layoutY="121.0" prefHeight="17.0" prefWidth="71.0" text="Colors" />
                 <TextField fx:id="weight" layoutX="373.0" layoutY="152.0" />
                 <Label layoutX="301.0" layoutY="156.0" prefHeight="17.0" prefWidth="71.0" text="Weight" />
-                <Button layoutX="413.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleSaveItem" text="Add Item" textFill="#213fd4" />
+                <Button layoutX="413.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleSaveItem" text="Save Item" textFill="#213fd4" />
                 <Button layoutX="137.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" textFill="#dc0000" />
                 <ImageView fx:id="picture" fitHeight="106.0" fitWidth="151.0" layoutX="372.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true" />
                 <Button layoutX="273.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleSelectPicture" text="Select Picture" textFill="#00e1ff" />
