@@ -49,9 +49,14 @@ public class DescriptionController {
         stage.close();
     }
 
-    public void handleDeleteItem() {
-        Stage stage = (Stage) description.getScene().getWindow();
-        stage.close();
+    public void handleDeleteItem() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/deleteItem.fxml"));
+        Parent p = (Parent)fxmlLoader.load();
+        Scene scene0 = new Scene(p, 400, 300);
+        Stage window = new Stage();
+        window.setTitle("Delete Item Page");
+        window.setScene(scene0);
+        window.show();
     }
 
     public void handleEditItem() {
