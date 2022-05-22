@@ -91,6 +91,15 @@ public class UserService {
 		 throw new UserDoesNotExist();
     }
 
+    public static User searchByEmail(String email) throws UserDoesNotExist {
+        for (User user : userRepository.find()) {
+            if (Objects.equals(email, user.getEmail())) {
+                return user;
+            }
+        }
+        throw new UserDoesNotExist();
+    }
+
     private static String encodePassword(String salt, String password) {
         MessageDigest md = getMessageDigest();
         md.update(salt.getBytes(StandardCharsets.UTF_8));

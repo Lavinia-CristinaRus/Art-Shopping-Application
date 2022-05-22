@@ -1,25 +1,23 @@
 package ArtShoppingApplication.controllers;
 
 import ArtShoppingApplication.exceptions.*;
-import javafx.event.ActionEvent;
+import ArtShoppingApplication.services.ItemService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import ArtShoppingApplication.services.UserService;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class AddItemController {
     @FXML
@@ -29,7 +27,7 @@ public class AddItemController {
     @FXML
     private TextField price;
     @FXML
-    private TextField category;
+    private ChoiceBox category;
     @FXML
     private TextField dimensions;
     @FXML
@@ -39,8 +37,16 @@ public class AddItemController {
     @FXML
     private TextField weight;
     @FXML
+    private Text message;
+    @FXML
     private ImageView picture;
     Image fxImage;
+    @FXML
+    public void initialize() {
+        category.getItems().addAll("Paintings", "Sculptures","Others");
+    }
+
+
     @FXML
     public void handleSelectPicture() {
 
@@ -59,6 +65,17 @@ public class AddItemController {
     }
 
     public void handleAddItem() {
+        try {
+            FileInputStream fileIn = new FileInputStream("log.txt");
+            Scanner scan = new Scanner(fileIn);
+            String artist = scan.next();
+            ItemService.addItem(name.getText(), fxImage.getUrl(), description.getText(), price.getText(), (String)category.getValue(), dimensions.getText(), materials.getText(), colors.getText(), weight.getText(), artist);
+            message.setText("Item added successfully!");
+        }
+        catch (NameAlreadyUsedException | NameFieldEmptyException | NoPictureSelectedException | DescriptionFieldEmptyException | PriceFieldEmptyException | PriceNotValidException | CategoryNotSelectedException | DimensionsFieldEmptyException | WeightFieldEmptyException | WeightNotValidException | FileNotFoundException | UserDoesNotExist ex) {
+            message.setText(ex.getMessage());
+
+        }
     }
 
     public void handleCancel() throws IOException {

@@ -27,7 +27,9 @@ public class Item {
         this.weight = weight;
         this.artist = artist;
     }
-
+    public String getName() {
+        return this.name;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,5 +1,8 @@
 package ArtShoppingApplication.model;
 
+import ArtShoppingApplication.exceptions.IncorrectPasswordException;
+import ArtShoppingApplication.exceptions.UserDoesNotExist;
+
 import java.util.Objects;
 
 public class User {
@@ -91,5 +94,4 @@ public class User {
         return result;
     }
 
-   
 }

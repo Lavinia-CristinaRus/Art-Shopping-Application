@@ -32,8 +32,8 @@ public class MyItemsController {
     public void testDescription(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/description.fxml"));
         Parent p = (Parent)fxmlLoader.load();
-        Scene scene0 = new Scene(p, 300, 300);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene0 = new Scene(p, 550, 400);
+        Stage window = new Stage();
         window.setTitle("Description Page");
         window.setScene(scene0);
         window.show();
