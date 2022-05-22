@@ -1,6 +1,9 @@
 package ArtShoppingApplication.controllers;
 
-import ArtShoppingApplication.services.UserService;
+import ArtShoppingApplication.exceptions.UserDoesNotExist;
+import ArtShoppingApplication.services.ItemService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,12 +11,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
+
 
 public class MyItemsController {
+
+    private ObservableList<String> itemlist = FXCollections.observableArrayList();
+
     @FXML
     private ListView items;
 
@@ -40,6 +50,19 @@ public class MyItemsController {
 
     }
 
+    @FXML
+    public void initialize() throws UserDoesNotExist, FileNotFoundException {
+
+        AtomicReference<String> p = new AtomicReference<>("");
+        ItemService.getMyItems().forEach(item -> {
+            p.set(item.getName());
+            itemlist.add(String.valueOf(p));
+        });
+        items.getItems().addAll(itemlist);
+
+
+    }
+
     public void toSignOut() throws IOException {
         new FileWriter("log.txt", false).close();
         Parent p = FXMLLoader.load(getClass().getResource("/login.fxml"));
@@ -50,7 +73,7 @@ public class MyItemsController {
         window.show();
     }
 
-    public void testDescription(ActionEvent event) throws IOException {
+    public void toDescriptionSelected() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/description.fxml"));
         Parent p = (Parent)fxmlLoader.load();
         Scene scene0 = new Scene(p, 550, 400);

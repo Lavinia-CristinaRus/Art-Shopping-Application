@@ -32,6 +32,11 @@ public class Item {
     public String getName() {
         return this.name;
     }
+
+    public User getArtist() {
+        return artist;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

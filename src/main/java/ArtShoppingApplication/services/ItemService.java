@@ -6,7 +6,12 @@ import ArtShoppingApplication.model.User;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 import static ArtShoppingApplication.services.FileSystemService.getPathToFile;
 import static ArtShoppingApplication.services.UserService.searchByEmail;
@@ -95,5 +100,24 @@ public class ItemService {
             if (Objects.equals(name, item.getName()))
                 throw new NameAlreadyUsedException(name);
         }
+    }
+
+    public static List<Item> getMyItems() throws FileNotFoundException, UserDoesNotExist {
+        List<Item> myItems = new ArrayList<>();
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fartist = scan.next();
+        User user = searchByEmail(fartist);
+        for (Item item : itemRepository.find()) {
+            if (Objects.equals(user, item.getArtist())) {
+                myItems.add(item);
+            }
+        }
+        return myItems;
+    }
+
+    public static List<Item> getItems()
+    {
+        return itemRepository.find().toList();
     }
 }
