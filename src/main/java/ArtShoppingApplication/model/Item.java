@@ -49,4 +49,14 @@ public class Item {
         return true;
     }
 
+    @Override
+    public String toString() {
+        String text = "Description: " + this.description + '\n' + "Price: " + this.price + '\n' + "Category: " + this.category + '\n'+ "Dimensions: " + this.dimensions + '\n'+ "Materials: " + this.material + '\n'+ "Colors: " + this.colors + '\n'+ "Weight: " + this.weight + '\n'+ "Artist: " + this.artist.getFullName();
+        return text;
+    }
+
+    public String getPicture() {
+        return this.picture;
+    }
+
 }

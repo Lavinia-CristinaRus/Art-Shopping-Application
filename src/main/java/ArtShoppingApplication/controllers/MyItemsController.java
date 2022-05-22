@@ -80,11 +80,15 @@ public class MyItemsController {
     public void toDescriptionSelected(MouseEvent mouseEvent) throws IOException {
         String item = (String)items.getSelectionModel().getSelectedItem();
         if(item==null||item.isEmpty()) message.setText("Nothing was selected.");
+        String file = "iname.txt";
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(item);
+        fileWriter.close();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/description.fxml"));
         Parent p = (Parent)fxmlLoader.load();
         Scene scene0 = new Scene(p, 550, 400);
         Stage window = new Stage();
-        window.setTitle(item);
+        window.setTitle("Description");
         window.setScene(scene0);
         window.show();
     }

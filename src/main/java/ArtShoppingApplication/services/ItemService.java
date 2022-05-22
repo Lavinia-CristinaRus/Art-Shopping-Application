@@ -120,4 +120,24 @@ public class ItemService {
     {
         return itemRepository.find().toList();
     }
+
+    public static Item getItemByName(String name) throws UserDoesNotExist, FileNotFoundException, ItemDoesNotExist {
+        try {
+            FileInputStream fileIn = new FileInputStream("log.txt");
+            Scanner scan = new Scanner(fileIn);
+            String fartist = scan.next();
+            User user = searchByEmail(fartist);
+            for (Item item : itemRepository.find()) {
+                if (Objects.equals(user, item.getArtist()) && Objects.equals(item.getName(), name)) {
+                    return item;
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UserDoesNotExist e) {
+            e.printStackTrace();
+        }
+        throw new ItemDoesNotExist();
+    }
+
 }
