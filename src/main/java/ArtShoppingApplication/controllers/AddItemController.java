@@ -64,11 +64,14 @@ public class AddItemController {
         picture.setImage(fxImage);
     }
 
-    public void handleAddItem() {
+    public void handleAddItem() throws NoPictureSelectedException {
         try {
             FileInputStream fileIn = new FileInputStream("log.txt");
             Scanner scan = new Scanner(fileIn);
             String artist = scan.next();
+            if(fxImage==null) {
+                throw new NoPictureSelectedException();
+            }
             ItemService.addItem(name.getText(), fxImage.getUrl(), description.getText(), price.getText(), (String)category.getValue(), dimensions.getText(), materials.getText(), colors.getText(), weight.getText(), artist);
             message.setText("Item added successfully!");
         }

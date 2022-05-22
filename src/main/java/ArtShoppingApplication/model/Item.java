@@ -27,6 +27,8 @@ public class Item {
         this.weight = weight;
         this.artist = artist;
     }
+    public Item() {
+    }
     public String getName() {
         return this.name;
     }
