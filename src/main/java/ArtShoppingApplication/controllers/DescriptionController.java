@@ -20,17 +20,19 @@ public class DescriptionController {
     private Text description;
 
     @FXML
-    public void close(ActionEvent event) throws IOException {
+    public void close(ActionEvent event) {
         Stage stage = (Stage) description.getScene().getWindow();
         stage.close();
     }
 
     public void handleDeleteItem() {
-
+        Stage stage = (Stage) description.getScene().getWindow();
+        stage.close();
     }
 
     public void handleEditItem() {
-
+        Stage stage = (Stage) description.getScene().getWindow();
+        stage.close();
     }
 
 }
