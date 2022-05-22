@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArtShoppingApplication.controllers.MyItemsController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ArtShoppingApplication.controllers.MyItemsController">
     <children>
-        <VBox prefHeight="600.0" prefWidth="186.0">
+        <VBox prefHeight="600.0" prefWidth="200.0">
             <children>
                 <Button id="Add item" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="70.0" onAction="#openItemRegistrationForm" prefHeight="0.0" prefWidth="177.0" text="Add Item" textFill="#f5f5f5">
                     <font>
@@ -43,7 +43,7 @@
             </Button>
             </children>
         </VBox>
-        <Pane fx:id="pane" prefHeight="600.0" prefWidth="370.0">
+        <Pane fx:id="pane" prefHeight="600.0" prefWidth="400.0">
             <children>
                 <ListView fx:id="items" layoutY="84.0" opacity="0.75" prefHeight="516.0" prefWidth="367.0" />
                 <Label layoutX="24.0" layoutY="14.0" prefHeight="48.0" prefWidth="393.0" text="My Items" textFill="WHITE">

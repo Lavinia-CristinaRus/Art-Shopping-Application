@@ -38,7 +38,7 @@ public class LoginController {
             fileWriter.write(EmailField.getText()+" "+"Seller");
             fileWriter.close();
             Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
-            Scene modifyScene = new Scene(modifyWindow,370,600);
+            Scene modifyScene = new Scene(modifyWindow,600,600);
             Stage window = new Stage();
             window.setScene(modifyScene);
             window.show();
@@ -52,7 +52,7 @@ public class LoginController {
             fileWriter.write(EmailField.getText()+" "+"Buyer");
             fileWriter.close();
             Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
-            Scene modifyScene = new Scene(modifyWindow,370,600);
+            Scene modifyScene = new Scene(modifyWindow,600,600);
             Stage window = new Stage();
             window.setScene(modifyScene);
             window.show();
