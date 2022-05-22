@@ -14,7 +14,7 @@
                     <font>
                         <Font size="24.0" />
                     </font></Text>
-                <Button alignment="BOTTOM_LEFT" layoutX="50.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleEditItem" prefHeight="37.0" prefWidth="71.0" text="Cancel" textAlignment="CENTER" textFill="#235dba">
+                <Button alignment="BOTTOM_LEFT" layoutX="50.0" layoutY="219.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="37.0" prefWidth="71.0" text="Cancel" textAlignment="CENTER" textFill="#235dba">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font></Button>
