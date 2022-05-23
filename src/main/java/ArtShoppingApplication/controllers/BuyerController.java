@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -32,7 +33,12 @@ public class BuyerController {
     @FXML
     private TextField searchTerm;
     @FXML
+    private ChoiceBox filterBox;
+    @FXML
 
+    public void filter() {
+
+    }
 
     public void toMyOrders() {
 
