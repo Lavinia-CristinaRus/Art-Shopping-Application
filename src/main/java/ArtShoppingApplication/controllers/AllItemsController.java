@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -27,6 +28,8 @@ public class AllItemsController {
     private ListView items;
     @FXML
     private Text message;
+    @FXML
+    private TextField searchTerm;
 
     @FXML
     public void toMyOrders() {
@@ -113,5 +116,16 @@ public class AllItemsController {
         window.setTitle("Requests page");
         window.setScene(scene0);
         window.show();
+    }
+
+    public void search(ActionEvent actionEvent) throws FileNotFoundException {
+        ObservableList<String> itemlist2 = FXCollections.observableArrayList();
+        String sTerm = searchTerm.getText();
+        AtomicReference<String> p = new AtomicReference<>("");
+        ItemService.getItemsByName(sTerm).forEach(item -> {
+            p.set(item.getName());
+            itemlist2.add(String.valueOf(p));
+        });
+        items.setItems(itemlist2);
     }
 }
