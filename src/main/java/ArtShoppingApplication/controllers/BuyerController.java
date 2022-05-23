@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -32,7 +33,19 @@ public class BuyerController {
     @FXML
     private TextField searchTerm;
     @FXML
+    private ChoiceBox filterBox;
+    @FXML
 
+    public void filter() throws FileNotFoundException {
+        ObservableList<String> itemlist2 = FXCollections.observableArrayList();
+        String sFilter = String.valueOf(filterBox.getValue());
+        AtomicReference<String> p = new AtomicReference<>("");
+        ItemService.getItemsByCategory(sFilter).forEach(item -> {
+            p.set(item.getName());
+            itemlist2.add(String.valueOf(p));
+        });
+        items.setItems(itemlist2);
+    }
 
     public void toMyOrders() {
 
@@ -52,7 +65,7 @@ public class BuyerController {
             itemlist.add(String.valueOf(p));
         });
         items.getItems().addAll(itemlist);
-
+        filterBox.getItems().addAll("Paintings", "Sculptures","Others");
 
     }
 
