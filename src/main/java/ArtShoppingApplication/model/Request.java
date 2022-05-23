@@ -29,6 +29,10 @@ public class Request {
         return this.description;
     }
 
+    public void setStatus(int status) {
+        this.accept = status;
+    }
+
     public String getBuyer() {
         return this.buyer;
     }
