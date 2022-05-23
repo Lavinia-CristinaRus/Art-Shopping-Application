@@ -58,7 +58,7 @@ public class BuyerController {
             itemlist.add(String.valueOf(p));
         });
         items.getItems().addAll(itemlist);
-
+        filterBox.getItems().addAll("Paintings", "Sculptures","Others");
 
     }
 
