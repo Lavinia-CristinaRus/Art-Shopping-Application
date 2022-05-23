@@ -3,8 +3,10 @@ package ArtShoppingApplication.controllers;
 import ArtShoppingApplication.exceptions.ItemDoesNotExist;
 import ArtShoppingApplication.exceptions.UserDoesNotExist;
 import ArtShoppingApplication.model.Item;
+import ArtShoppingApplication.model.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -16,6 +18,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import static ArtShoppingApplication.services.ItemService.getItemByName;
+import static ArtShoppingApplication.services.RequestService.checkReqExists;
+import static ArtShoppingApplication.services.RequestService.getReqByName;
+
 import ArtShoppingApplication.services.RequestService;
 public class DescriptionRequestController {
     @FXML
@@ -24,17 +29,30 @@ public class DescriptionRequestController {
     private Text description;
     @FXML
     private ImageView itemImage;
+    @FXML
+    private Button deny;
+    @FXML
+    private Button accept;
 
     @FXML
     public void initialize() throws ItemDoesNotExist, FileNotFoundException {
         FileInputStream fileIn = new FileInputStream("iname.txt");
         Scanner scan = new Scanner(fileIn);
         String sname = scan.next();
-        Item item = getItemByName(sname);
-        String desc = item.toString();
-        description.setText(desc);
-        name.setText(sname);
-        itemImage.setImage(new Image(item.getPicture()));
+        Request request = getReqByName(sname);
+        if(request.getStatus()==0){
+            Item item = getItemByName(sname);
+            String desc = request.getDescription();
+            description.setText(desc);
+            name.setText(sname);
+            itemImage.setImage(new Image(item.getPicture()));
+        }
+        else {
+            description.setText(request.getDescription());
+            name.setText(sname);
+            accept.setDisable(true);
+            deny.setDisable(true);
+        }
     }
 
     @FXML

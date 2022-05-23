@@ -72,6 +72,18 @@ public class RequestService {
         return false;
     }
 
+    public static Request getReqByName(String name) throws FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fbuyer = scan.next();
+        for(Request req : requestRepository.find(and(eq("name", name),eq("buyer",fbuyer)))){
+            if(fbuyer.equals(req.getBuyer())) {
+                return req;
+            }
+        }
+        return null;
+    }
+
 
     public static void updateRequest(String name, String description, int ok) throws  UserDoesNotExist, FileNotFoundException {
         deleteItem();
