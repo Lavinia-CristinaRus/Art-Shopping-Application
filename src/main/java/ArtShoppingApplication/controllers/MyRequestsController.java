@@ -42,17 +42,24 @@ public class MyRequestsController {
     }
 
 
-    public void toBuyerList(ActionEvent event) throws IOException{
-        Parent p = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
-        Scene scene0 = new Scene(p, 1000, 600);
-        Stage window = (Stage) requests.getScene().getWindow();
-        window.setTitle("Items page");
-        window.setScene(scene0);
+    public void tomyItems(ActionEvent event) throws IOException {
+        Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
+        Scene modifyScene = new Scene(modifyWindow,600,600);
+        Stage window = new Stage();
+        window.setScene(modifyScene);
         window.show();
+        Stage stage = (Stage)message.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
-    public void toMyRequests() {
+    public void toMyRequests(ActionEvent event) throws IOException {
+        Parent p = FXMLLoader.load(getClass().getResource("/myRequests.fxml"));
+        Scene scene0 = new Scene(p, 1000, 600);
+        Stage window = (Stage) message.getScene().getWindow();
+        window.setTitle("Requests page");
+        window.setScene(scene0);
+        window.show();
     }
 
     @FXML
@@ -60,7 +67,7 @@ public class MyRequestsController {
 
         AtomicReference<String> p = new AtomicReference<>("");
         RequestService.getMyRequest().forEach(request -> {
-            p.set(request.getName());
+            p.set(request.getName()+" " +request.getBuyer());
             requestlist.add(String.valueOf(p));
         });
         requests.getItems().addAll(requestlist);
@@ -94,4 +101,16 @@ public class MyRequestsController {
         window.show();
     }
 
+    public void toAllItems() throws IOException {
+        Parent modifyWindow = FXMLLoader.load(getClass().getResource("/allItems.fxml"));
+        Scene modifyScene = new Scene(modifyWindow,600,600);
+        Stage window = new Stage();
+        window.setScene(modifyScene);
+        window.show();
+        Stage stage = (Stage) message.getScene().getWindow();
+        stage.close();
+    }
+
+    public void toMyOrders() throws IOException {
+    }
 }

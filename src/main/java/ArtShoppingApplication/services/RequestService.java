@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 import static ArtShoppingApplication.services.FileSystemService.getPathToFile;
+import static ArtShoppingApplication.services.ItemService.deleteItemByName;
 import static org.dizitart.no2.objects.filters.ObjectFilters.*;
 
 
@@ -72,10 +73,30 @@ public class RequestService {
         return false;
     }
 
+    public static Request getReqByName(String name) throws FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fbuyer = scan.next();
+        for(Request req : requestRepository.find(and(eq("name", name),eq("buyer",fbuyer)))){
+            if(fbuyer.equals(req.getBuyer())) {
+                return req;
+            }
+        }
+        return null;
+    }
+
+    private static void deleteRequest(String name, String desc) throws FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fbuyer = scan.next();
+        requestRepository.remove(and(and(eq("name", name),eq("description",desc)),eq("buyer",fbuyer)));
+    }
+
 
     public static void updateRequest(String name, String description, int ok) throws  UserDoesNotExist, FileNotFoundException {
-        deleteItem();
+        deleteRequest(name,description);
         if(ok==1) {
+            deleteItemByName(name);
             for(Request req : requestRepository.find(and(eq("name", name),eq("description",description)))){
                 req.setStatus(2);
             }

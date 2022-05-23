@@ -14,11 +14,11 @@
                <font>
                   <Font size="20.0" />
                </font></Text>
-                <Button alignment="BOTTOM_LEFT" layoutX="383.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleDenyOrder" prefHeight="37.0" prefWidth="115.0" text="Deny Order" textAlignment="CENTER" textFill="#235dba">
+                <Button  fx:id="deny" alignment="BOTTOM_LEFT" layoutX="383.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleDenyOrder" prefHeight="37.0" prefWidth="115.0" text="Deny Order" textAlignment="CENTER" textFill="#235dba">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font></Button>
-                <Button alignment="BOTTOM_RIGHT" layoutX="37.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleAcceptOrder" prefHeight="37.0" prefWidth="126.0" text="Accept Order" textAlignment="CENTER" textFill="#d50000">
+                <Button  fx:id="accept" alignment="BOTTOM_RIGHT" layoutX="37.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleAcceptOrder" prefHeight="37.0" prefWidth="126.0" text="Accept Order" textAlignment="CENTER" textFill="#d50000">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font></Button>
