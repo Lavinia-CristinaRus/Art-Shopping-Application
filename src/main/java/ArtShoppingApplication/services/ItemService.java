@@ -189,4 +189,15 @@ public class ItemService {
         }
         return items;
     }
+
+    public static List<Item> getItemsByCategory(String cat) throws FileNotFoundException {
+        List<Item> items = new ArrayList<>();
+        for (Item item : itemRepository.find()) {
+            if(item.getCategory().equals(cat)) {
+                items.add(item);
+            }
+        }
+        return items;
+    }
+
 }
