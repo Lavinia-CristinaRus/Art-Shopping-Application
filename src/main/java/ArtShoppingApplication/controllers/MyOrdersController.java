@@ -1,13 +1,12 @@
 package ArtShoppingApplication.controllers;
 
 import ArtShoppingApplication.exceptions.UserDoesNotExist;
-import ArtShoppingApplication.services.ItemService;
+import ArtShoppingApplication.services.RequestService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
@@ -21,39 +20,39 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
 
 
-public class BuyerController {
+public class MyOrdersController {
 
-    private ObservableList<String> itemlist = FXCollections.observableArrayList();
+    private ObservableList<String> requestlist = FXCollections.observableArrayList();
 
     @FXML
-    private ListView items;
+    private ListView requests;
     @FXML
     private Text message;
 
 
-    public void toMyOrders(ActionEvent event) throws IOException {
-        Parent p = FXMLLoader.load(getClass().getResource("/myOrders.fxml"));
+
+    public void toBuyerList(ActionEvent event) throws IOException{
+        Parent p = FXMLLoader.load(getClass().getResource("/buyerPage.fxml"));
         Scene scene0 = new Scene(p, 1000, 600);
-        Stage window = (Stage) items.getScene().getWindow();
-        window.setTitle("Orders page");
+        Stage window = (Stage) requests.getScene().getWindow();
+        window.setTitle("Items page");
         window.setScene(scene0);
         window.show();
     }
 
-    public void toBuyerList() {
-
+    @FXML
+    public void toMyOrders(ActionEvent actionEvent) {
     }
-
 
     @FXML
     public void initialize() throws UserDoesNotExist, FileNotFoundException {
 
         AtomicReference<String> p = new AtomicReference<>("");
-        ItemService.getItems().forEach(item -> {
-            p.set(item.getName());
-            itemlist.add(String.valueOf(p));
+        RequestService.getMyOrder().forEach(request -> {
+            p.set(request.getName());
+            requestlist.add(String.valueOf(p));
         });
-        items.getItems().addAll(itemlist);
+        requests.getItems().addAll(requestlist);
 
 
     }
@@ -62,20 +61,20 @@ public class BuyerController {
         new FileWriter("log.txt", false).close();
         Parent p = FXMLLoader.load(getClass().getResource("/login.fxml"));
         Scene scene0 = new Scene(p, 1000, 600);
-        Stage window = (Stage) items.getScene().getWindow();
+        Stage window = (Stage) requests.getScene().getWindow();
         window.setTitle("Login page");
         window.setScene(scene0);
         window.show();
     }
 
     public void toDescriptionSelected(MouseEvent mouseEvent) throws IOException {
-        String item = (String)items.getSelectionModel().getSelectedItem();
+        String item = (String)requests.getSelectionModel().getSelectedItem();
         if(item==null||item.isEmpty()) message.setText("Nothing was selected.");
         String file = "iname.txt";
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(item);
         fileWriter.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/descriptionBuyer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/descriptionOrder.fxml"));
         Parent p = (Parent)fxmlLoader.load();
         Scene scene0 = new Scene(p, 550, 400);
         Stage window = new Stage();

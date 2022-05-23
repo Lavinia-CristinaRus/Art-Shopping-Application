@@ -112,6 +112,4 @@ public class MyItemsController {
         stage.close();
     }
 
-    public void toMyOrders() throws IOException {
-    }
 }

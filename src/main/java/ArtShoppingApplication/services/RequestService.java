@@ -44,8 +44,9 @@ public class RequestService {
         Scanner scan = new Scanner(fileIn);
         String fartist = scan.next();
         for (Request request : requestRepository.find()) {
-            if(request.getDescription().toLowerCase().contains(fartist.toLowerCase()));
-                 myRequests.add(request);
+            if(request.getDescription().trim().toLowerCase().contains(fartist.trim().toLowerCase())){
+                myRequests.add(request);
+            }
         }
         return myRequests;
     }
@@ -74,13 +75,8 @@ public class RequestService {
     }
 
     public static Request getReqByName(String name) throws FileNotFoundException {
-        FileInputStream fileIn = new FileInputStream("log.txt");
-        Scanner scan = new Scanner(fileIn);
-        String fbuyer = scan.next();
-        for(Request req : requestRepository.find(and(eq("name", name),eq("buyer",fbuyer)))){
-            if(fbuyer.equals(req.getBuyer())) {
+        for(Request req : requestRepository.find(eq("name", name))){
                 return req;
-            }
         }
         return null;
     }
@@ -105,6 +101,27 @@ public class RequestService {
         Scanner scan = new Scanner(fileIn);
         String fbuyer = scan.next();
         requestRepository.insert(new Request(name,description,ok,fbuyer));
+    }
+	
+	    public static Request getRequest() throws ItemDoesNotExist, FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("request.txt");
+        Scanner scan = new Scanner(fileIn);
+        String name = scan.next();
+        for (Request req : requestRepository.find(eq("name",name))) {
+            return req;
+        }
+        throw new ItemDoesNotExist();
+    }
+	
+	    public static List<Request> getMyOrder() throws FileNotFoundException {
+        List<Request> myRequests = new ArrayList<>();
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String buyer = scan.next();
+        for (Request request : requestRepository.find()) {
+            if(request.getBuyer().toLowerCase().contains(buyer.toLowerCase()))    myRequests.add(request);
+        }
+        return myRequests;
     }
 
 }
