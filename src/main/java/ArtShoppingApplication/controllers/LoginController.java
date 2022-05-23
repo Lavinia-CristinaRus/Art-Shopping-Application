@@ -35,7 +35,7 @@ public class LoginController {
             loginMessage.setText("successful login!");
             String file = "log.txt";
             FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write(EmailField.getText()+" "+"Seller");
+            fileWriter.write(EmailField.getText());
             fileWriter.close();
             Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
             Scene modifyScene = new Scene(modifyWindow,600,600);
