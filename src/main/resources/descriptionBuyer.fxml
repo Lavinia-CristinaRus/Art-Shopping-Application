@@ -14,7 +14,7 @@
                <font>
                   <Font size="20.0" />
                </font></Text>
-                <Button alignment="BOTTOM_LEFT" layoutX="366.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleRequestItem" prefHeight="37.0" prefWidth="132.0" text="Request Item" textAlignment="CENTER" textFill="#235dba">
+                <Button fx:id="reqbtn" alignment="BOTTOM_LEFT" layoutX="366.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleRequestItem" prefHeight="37.0" prefWidth="132.0" text="Request Item" textAlignment="CENTER" textFill="#235dba">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font></Button>

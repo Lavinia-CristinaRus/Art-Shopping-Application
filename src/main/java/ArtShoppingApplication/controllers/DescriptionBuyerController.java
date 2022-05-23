@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -30,6 +31,8 @@ public class DescriptionBuyerController {
     private Text description;
     @FXML
     private ImageView itemImage;
+    @FXML
+    private Button reqbtn;
 
     @FXML
     public void initialize() throws ItemDoesNotExist, FileNotFoundException {
@@ -51,7 +54,6 @@ public class DescriptionBuyerController {
 
 
     public void handleRequestItem() throws IOException {
-
         String file = "request.txt";
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(name.getText());

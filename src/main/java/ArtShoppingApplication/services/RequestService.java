@@ -27,12 +27,14 @@ public class RequestService {
         requestRepository = database.getRepository(Request.class);
     }
 
-    public static void addItem(String name, String description) {
-
-    boolean ok=true;
+    public static void addItem(String name, String description) throws FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fbuyer = scan.next();
+        boolean ok=true;
         for (Request request : requestRepository.find()) {
             if (Objects.equals(name, request.getName()) && Objects.equals(description, request.getDescription())) ok=false;}
-         if(ok==true)    requestRepository.insert(new Request(name, description,0));
+         if(ok==true)    requestRepository.insert(new Request(name, description,0,fbuyer));
     }
 
     public static List<Request> getMyRequest() throws FileNotFoundException {
@@ -59,7 +61,10 @@ public class RequestService {
 
     public static void updateRequest(String name, String description, int ok) throws  UserDoesNotExist, FileNotFoundException {
         deleteItem();
-        requestRepository.insert(new Request(name,description,ok));
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fbuyer = scan.next();
+        requestRepository.insert(new Request(name,description,ok,fbuyer));
     }
 
 }

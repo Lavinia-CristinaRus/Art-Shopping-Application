@@ -7,11 +7,13 @@ public class Request {
 
     private String name;
     private String description;
+    private String buyer;
     private int accept=0;
 
-    public Request(String name, String description, int accept) {
+    public Request(String name, String description, int accept, String buyer) {
         this.name = name;
         this.description = description;
+        this.buyer = buyer;
         this.accept=accept;
     }
 
@@ -26,4 +28,10 @@ public class Request {
     public String getDescription() {
         return this.description;
     }
+
+    public String getBuyer() {
+        return this.buyer;
+    }
+
+    public int getStatus(){return this.accept;}
 }
