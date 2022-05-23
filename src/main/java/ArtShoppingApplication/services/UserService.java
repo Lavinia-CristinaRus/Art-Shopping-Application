@@ -124,23 +124,18 @@ public class UserService {
         userRepository.remove(eq("email", email));
     }
 
-    public static int verify(String email, String password) {
+    public static User verify(String email, String password) throws UserDoesNotExist, WrongPasswordException {
         for(User user : userRepository.find()) {
             if(email.equals(user.getEmail())){
                 if(encodePassword(email,password).equals(user.getPassword())) {
-                    if(user.getRole() == "Seller") {
-                        return 1;
-                    }
-                    else{
-                        return 2;
-                    }
+                    return user;
                 }
                 else {
-                    return 0;
+                    throw new WrongPasswordException();
                 }
             }
         }
-        return -1;
+        throw new UserDoesNotExist();
     }
 }
 

@@ -1,5 +1,7 @@
 package ArtShoppingApplication.controllers;
 
+import ArtShoppingApplication.exceptions.WrongPasswordException;
+import ArtShoppingApplication.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,13 +32,14 @@ public class LoginController {
     private Text loginMessage;
 
 
-    public void login() throws Exception {
-        if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 1) {
-            loginMessage.setText("successful login!");
-            String file = "log.txt";
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write(EmailField.getText()+" "+"Seller");
-            fileWriter.close();
+    public void login() throws Exception, WrongPasswordException {
+        User user = UserService.verify(EmailField.getText(), PasswordField.getText());
+        loginMessage.setText("successful login!");
+        String file = "log.txt";
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(EmailField.getText());
+        fileWriter.close();
+        if (user.getRole().equals("Seller")) {
             Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
             Scene modifyScene = new Scene(modifyWindow,600,600);
             Stage window = new Stage();
@@ -45,12 +48,7 @@ public class LoginController {
             Stage stage = (Stage) EmailField.getScene().getWindow();
             stage.close();
         }
-        if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 2) {
-            loginMessage.setText("successful login!");
-            String file = "log.txt";
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write(EmailField.getText()+" "+"Buyer");
-            fileWriter.close();
+        else {
             Parent modifyWindow = FXMLLoader.load(getClass().getResource("/buyerPage.fxml"));
             Scene modifyScene = new Scene(modifyWindow,600,600);
             Stage window = new Stage();
@@ -59,15 +57,6 @@ public class LoginController {
             Stage stage = (Stage) EmailField.getScene().getWindow();
             stage.close();
         }
-        if (UserService.verify(EmailField.getText(), PasswordField.getText()) == 0) {
-            loginMessage.setText("Incorrect password!");
-            PasswordField.clear();
-            EmailField.clear();
-            return;
-        }
-        PasswordField.clear();
-        EmailField.clear();
-        loginMessage.setText("There is no account with that email address!");
     }
 
 
