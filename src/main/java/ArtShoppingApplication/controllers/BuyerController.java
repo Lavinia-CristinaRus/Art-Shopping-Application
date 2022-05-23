@@ -7,17 +7,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileWriter;
 import java.util.concurrent.atomic.AtomicReference;
 
 
@@ -29,6 +29,9 @@ public class BuyerController {
     private ListView items;
     @FXML
     private Text message;
+    @FXML
+    private TextField searchTerm;
+    @FXML
 
 
     public void toMyOrders() {
@@ -79,4 +82,7 @@ public class BuyerController {
         window.show();
     }
 
+    public void search(ActionEvent actionEvent) {
+        String sTerm = searchTerm.getText();
+    }
 }
