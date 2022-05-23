@@ -43,8 +43,14 @@ public class MyItemsController {
     }
 
 
-    public void toBuyerList() {
-
+    public void tomyItems(ActionEvent event) throws IOException {
+        Parent modifyWindow = FXMLLoader.load(getClass().getResource("/myItems.fxml"));
+        Scene modifyScene = new Scene(modifyWindow,600,600);
+        Stage window = new Stage();
+        window.setScene(modifyScene);
+        window.show();
+        Stage stage = (Stage)message.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
