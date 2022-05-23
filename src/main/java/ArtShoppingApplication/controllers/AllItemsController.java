@@ -38,8 +38,15 @@ public class AllItemsController {
     public void toMyOrders() {
 
     }
-    public void filter() {
-
+    public void filter() throws FileNotFoundException {
+        ObservableList<String> itemlist2 = FXCollections.observableArrayList();
+        String sFilter = String.valueOf(filterBox.getValue());
+        AtomicReference<String> p = new AtomicReference<>("");
+        ItemService.getItemsByCategory(sFilter).forEach(item -> {
+            p.set(item.getName());
+            itemlist2.add(String.valueOf(p));
+        });
+        items.setItems(itemlist2);
     }
 
 
