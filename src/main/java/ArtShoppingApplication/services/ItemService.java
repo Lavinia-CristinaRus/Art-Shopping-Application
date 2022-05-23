@@ -174,4 +174,13 @@ public class ItemService {
 
     }
 
+    public static void deleteItemByName(String name) throws FileNotFoundException, UserDoesNotExist {
+        FileInputStream fileIn1 = new FileInputStream("log.txt");
+        Scanner scan1 = new Scanner(fileIn1);
+        String fartist1 = scan1.next();
+//       itemRepository.remove(ObjectFilters.ALL); //used because of nasty first try of creating database
+        itemRepository.remove(and(eq("name", name),eq("artist",fartist1)));
+
+    }
+
 }
