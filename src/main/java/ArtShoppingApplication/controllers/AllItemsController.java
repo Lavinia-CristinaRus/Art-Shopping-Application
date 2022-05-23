@@ -118,7 +118,14 @@ public class AllItemsController {
         window.show();
     }
 
-    public void search(ActionEvent actionEvent) {
+    public void search(ActionEvent actionEvent) throws FileNotFoundException {
+        ObservableList<String> itemlist2 = FXCollections.observableArrayList();
         String sTerm = searchTerm.getText();
+        AtomicReference<String> p = new AtomicReference<>("");
+        ItemService.getItemsByName(sTerm).forEach(item -> {
+            p.set(item.getName());
+            itemlist2.add(String.valueOf(p));
+        });
+        items.setItems(itemlist2);
     }
 }

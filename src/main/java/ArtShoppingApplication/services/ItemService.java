@@ -9,10 +9,7 @@ import org.dizitart.no2.objects.ObjectRepository;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 import static ArtShoppingApplication.services.FileSystemService.getPathToFile;
 import static ArtShoppingApplication.services.UserService.searchByEmail;
@@ -183,4 +180,13 @@ public class ItemService {
 
     }
 
+    public static List<Item> getItemsByName(String sname) throws FileNotFoundException {
+        List<Item> items = new ArrayList<>();
+        for (Item item : itemRepository.find()) {
+            if(item.getName().toLowerCase().contains(sname.toLowerCase())) {
+                items.add(item);
+            }
+        }
+        return items;
+    }
 }
