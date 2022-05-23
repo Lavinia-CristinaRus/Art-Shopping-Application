@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -30,12 +31,16 @@ public class AllItemsController {
     private Text message;
     @FXML
     private TextField searchTerm;
+    @FXML
+    private ChoiceBox filterBox;
 
     @FXML
     public void toMyOrders() {
 
     }
+    public void filter() {
 
+    }
 
 
     @FXML
