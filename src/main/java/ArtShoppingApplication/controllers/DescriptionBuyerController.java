@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import static ArtShoppingApplication.services.ItemService.getItem;
+import static ArtShoppingApplication.services.RequestService.checkReqExists;
 
 
 public class DescriptionBuyerController {
@@ -44,6 +45,12 @@ public class DescriptionBuyerController {
         description.setText(desc);
         name.setText(sname);
         itemImage.setImage(new Image(item.getPicture()));
+        if(checkReqExists(sname,desc)){
+            reqbtn.setText("Drop Request");
+        }
+        else{
+            reqbtn.setText("Request Item");
+        }
     }
 
     @FXML

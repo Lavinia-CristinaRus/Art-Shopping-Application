@@ -50,13 +50,27 @@ public class RequestService {
     }
 
     public static void deleteItem() throws FileNotFoundException, UserDoesNotExist {
-        FileInputStream fileIn = new FileInputStream("request.txt");
+        FileInputStream fileIn = new FileInputStream("log.txt");
         Scanner scan = new Scanner(fileIn);
         String fname = scan.next();
-        requestRepository.remove(eq("name", fname));
+        FileInputStream fileIn2 = new FileInputStream("request.txt");
+        Scanner scan2 = new Scanner(fileIn2);
+        String fname2 = scan2.next();
+        requestRepository.remove(and(eq("name", fname2),eq("buyer",fname)));
 
     }
 
+    public static boolean checkReqExists(String name, String description) throws FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fbuyer = scan.next();
+        for(Request req : requestRepository.find(and(eq("name", name),eq("description",description)))){
+            if(fbuyer.equals(req.getBuyer())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     public static void updateRequest(String name, String description, int ok) throws  UserDoesNotExist, FileNotFoundException {
