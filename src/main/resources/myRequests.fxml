@@ -17,30 +17,40 @@
                         <Insets />
                     </VBox.margin>
                 </Button>
-            <Button fx:id="buyerList" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toBuyerList" prefHeight="0.0" prefWidth="177.0" text="View All Items" textFill="#f5f5f5">
-               <font>
-                  <Font name="Consolas Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="myRequests" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toMyRequests" prefHeight="0.0" prefWidth="177.0" text="My Requests" textFill="#f5f5f5">
-               <font>
-                  <Font name="Consolas Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="signOut" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toSignOut" prefHeight="0.0" prefWidth="177.0" text="Sign Out" textFill="#f5f5f5">
-               <font>
-                  <Font name="Consolas Bold" size="14.0" />
-               </font>
-            </Button>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Text fx:id="message" layoutX="16.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="168.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
+                <Button fx:id="myItems" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="10.0" layoutY="37.0" onAction="#tomyItems" prefHeight="0.0" prefWidth="177.0" text="View My Items" textFill="#f5f5f5">
+                    <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="ItemsList" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toAllItems" prefHeight="0.0" prefWidth="177.0" text="View All Items" textFill="#f5f5f5">
+                    <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="myOrders" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toMyOrders" prefHeight="0.0" prefWidth="177.0" text="My Orders" textFill="#f5f5f5">
+                    <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="myRequests" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toMyRequests" prefHeight="0.0" prefWidth="177.0" text="My Requests" textFill="#f5f5f5">
+                    <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="signOut" alignment="BOTTOM_CENTER" contentDisplay="TOP" onAction="#toSignOut" prefHeight="0.0" prefWidth="177.0" text="Sign Out" textFill="#f5f5f5">
+                    <font>
+                        <Font name="Consolas Bold" size="14.0" />
+                    </font>
+                </Button>
+                <Pane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Text fx:id="message" layoutX="16.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="168.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </Pane>
             </children>
         </VBox>
         <Pane fx:id="pane" prefHeight="600.0" prefWidth="400.0">
