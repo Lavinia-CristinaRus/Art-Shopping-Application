@@ -2,6 +2,7 @@ package ArtShoppingApplication.services;
 
 import ArtShoppingApplication.exceptions.*;
 import ArtShoppingApplication.model.Item;
+import ArtShoppingApplication.model.Request;
 import ArtShoppingApplication.model.User;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.objects.ObjectRepository;
@@ -20,6 +21,7 @@ import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 public class ItemService {
     private static ObjectRepository<Item> itemRepository;
+    private static ObjectRepository<Request> requestRepository;
 
     public static void initDatabase() {
         Nitrite database = Nitrite.builder()
@@ -27,6 +29,7 @@ public class ItemService {
                 .openOrCreate("test", "test");
         itemRepository = database.getRepository(Item.class);
     }
+
 
     public static void addItem(String name, String picture, String description, String price, String category, String dimensions, String material, String colors, String weight, String ssartist) throws NameAlreadyUsedException, NameFieldEmptyException, NoPictureSelectedException, DescriptionFieldEmptyException, PriceFieldEmptyException, PriceNotValidException, CategoryNotSelectedException, DimensionsFieldEmptyException, WeightFieldEmptyException, WeightNotValidException, UserDoesNotExist {
         checkNameFieldIsNotEmpty(name);
@@ -144,6 +147,16 @@ public class ItemService {
         Scanner scan = new Scanner(fileIn);
         String fartist = scan.next();
         for (Item item : itemRepository.find(and(eq("name",name),eq("artist",fartist)))) {
+            return item;
+        }
+        throw new ItemDoesNotExist();
+    }
+
+    public static Item getItem(String name) throws ItemDoesNotExist, FileNotFoundException {
+        FileInputStream fileIn = new FileInputStream("log.txt");
+        Scanner scan = new Scanner(fileIn);
+        String fartist = scan.next();
+        for (Item item : itemRepository.find(eq("name",name))) {
             return item;
         }
         throw new ItemDoesNotExist();

@@ -1,6 +1,7 @@
 package ArtShoppingApplication;
 
 import ArtShoppingApplication.services.ItemService;
+import ArtShoppingApplication.services.RequestService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,7 @@ public class Main extends Application {
         initDirectory();
         UserService.initDatabase();
         ItemService.initDatabase();
+        RequestService.initDatabase();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("register.fxml"));
         primaryStage.setTitle("Registration Example");
         primaryStage.setScene(new Scene(root, 1000, 600));

@@ -42,16 +42,19 @@ public class MyItemsController {
         window.show();
     }
 
-    public void toRequests() {
-
-    }
 
     public void toBuyerList() {
 
     }
 
-    public void toMyRequests() {
-
+    @FXML
+    public void toMyRequests(ActionEvent event) throws IOException {
+        Parent p = FXMLLoader.load(getClass().getResource("/myRequests.fxml"));
+        Scene scene0 = new Scene(p, 1000, 600);
+        Stage window = (Stage) items.getScene().getWindow();
+        window.setTitle("Requests page");
+        window.setScene(scene0);
+        window.show();
     }
 
     @FXML
