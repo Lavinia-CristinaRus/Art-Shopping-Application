@@ -60,12 +60,17 @@ public class DescriptionBuyerController {
     }
 
 
-    public void handleRequestItem() throws IOException {
+    public void handleRequestItem() throws IOException, UserDoesNotExist {
         String file = "request.txt";
         FileWriter fileWriter = new FileWriter(file);
         fileWriter.write(name.getText());
         fileWriter.close();
-            RequestService.addItem(name.getText(),description.getText());
+        if(reqbtn.getText().equals("Request Item")) {
+            RequestService.addItem(name.getText(), description.getText());
+        }
+        else {
+            RequestService.deleteItem();
+        }
     }
 
 }
