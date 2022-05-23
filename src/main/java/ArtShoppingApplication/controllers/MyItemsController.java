@@ -102,4 +102,16 @@ public class MyItemsController {
         window.show();
     }
 
+    public void toAllItems() throws IOException {
+        Parent modifyWindow = FXMLLoader.load(getClass().getResource("/allItems.fxml"));
+        Scene modifyScene = new Scene(modifyWindow,600,600);
+        Stage window = new Stage();
+        window.setScene(modifyScene);
+        window.show();
+        Stage stage = (Stage) message.getScene().getWindow();
+        stage.close();
+    }
+
+    public void toMyOrders() throws IOException {
+    }
 }
